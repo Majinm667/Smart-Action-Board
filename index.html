@@ -7,6 +7,8 @@
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #F8F9FA; display: flex; height: 100vh; overflow: hidden; }
+
+  /* SIDEBAR */
   .sidebar { width: 220px; background: #0F1B2D; color: white; display: flex; flex-direction: column; padding: 20px 0; flex-shrink: 0; }
   .sidebar-logo { display: flex; align-items: center; gap: 10px; padding: 0 16px 20px; border-bottom: 1px solid rgba(255,255,255,0.1); }
   .logo-icon { width: 32px; height: 32px; background: #2563EB; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; }
@@ -28,6 +30,8 @@
   .user-avatar { width: 28px; height: 28px; background: #374151; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; }
   .user-name { font-size: 12px; font-weight: 500; }
   .user-role { font-size: 10px; color: rgba(255,255,255,0.4); }
+
+  /* MAIN */
   .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
   .screen { display: none; flex-direction: column; height: 100%; overflow-y: auto; }
   .screen.active { display: flex; }
@@ -36,6 +40,8 @@
   .topbar-title { font-size: 26px; font-weight: 700; color: #111827; }
   .topbar-right { display: flex; align-items: center; gap: 12px; font-size: 12px; color: #6B7280; }
   .sync-dot { width: 6px; height: 6px; background: #10B981; border-radius: 50%; display: inline-block; margin-right: 4px; }
+
+  /* BRIEFING BANNER */
   .briefing-banner { margin: 16px 24px; background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: 12px; padding: 14px 18px; display: flex; align-items: center; justify-content: space-between; }
   .briefing-left { display: flex; align-items: center; gap: 12px; }
   .briefing-icon { width: 32px; height: 32px; background: #2563EB; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 14px; flex-shrink: 0; }
@@ -45,6 +51,25 @@
   .briefing-stat { text-align: center; font-size: 11px; color: #6B7280; }
   .briefing-stat strong { display: block; font-size: 18px; font-weight: 700; color: #111827; }
   .btn-alert { background: #2563EB; color: white; border: none; border-radius: 8px; padding: 8px 16px; font-size: 13px; font-weight: 500; cursor: pointer; white-space: nowrap; }
+
+  /* PROGRESSION GO/NO-GO */
+  .gonogo-bar { margin: 0 24px 12px; background: white; border: 1px solid #E5E7EB; border-radius: 12px; padding: 12px 16px; }
+  .gonogo-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .gonogo-title { font-size: 11px; font-weight: 600; color: #6B7280; text-transform: uppercase; letter-spacing: 0.5px; }
+  .gonogo-badge { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 20px; }
+  .gonogo-badge.nogo { background: #FEE2E2; color: #DC2626; }
+  .gonogo-badge.go { background: #D1FAE5; color: #059669; }
+  .gonogo-track { display: flex; gap: 8px; align-items: center; }
+  .gonogo-item { flex: 1; }
+  .gonogo-label { font-size: 10px; color: #9CA3AF; margin-bottom: 4px; }
+  .gonogo-progress { height: 6px; background: #F3F4F6; border-radius: 3px; overflow: hidden; }
+  .gonogo-fill { height: 100%; border-radius: 3px; transition: width 0.5s; }
+  .gonogo-fill.red { background: #EF4444; }
+  .gonogo-fill.orange { background: #F59E0B; }
+  .gonogo-fill.green { background: #10B981; }
+  .gonogo-val { font-size: 11px; font-weight: 600; color: #374151; margin-top: 2px; }
+
+  /* KPI */
   .kpi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; padding: 0 24px; }
   .kpi-card { background: white; border: 1px solid #E5E7EB; border-radius: 12px; padding: 16px; }
   .kpi-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
@@ -55,6 +80,8 @@
   .kpi-value { font-size: 28px; font-weight: 700; color: #111827; }
   .kpi-sub { font-size: 12px; color: #9CA3AF; margin-bottom: 12px; }
   .mini-chart { height: 60px; }
+
+  /* CONTENT */
   .content-row { display: grid; grid-template-columns: 1fr 280px; gap: 12px; padding: 12px 24px 24px; flex: 1; }
   .actions-card { background: white; border: 1px solid #E5E7EB; border-radius: 12px; padding: 16px; }
   .card-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; }
@@ -77,6 +104,8 @@
   .action-impact.pos { color: #059669; }
   .action-impact.neg { color: #DC2626; }
   .action-duration { font-size: 12px; color: #9CA3AF; }
+
+  /* RIGHT COL */
   .right-col { display: flex; flex-direction: column; gap: 12px; }
   .alert-card { background: #FEF2F2; border: 1px solid #FECACA; border-radius: 12px; padding: 16px; }
   .alert-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
@@ -94,11 +123,26 @@
   .member-dot { width: 8px; height: 8px; border-radius: 50%; }
   .member-dot.green { background: #10B981; }
   .member-dot.orange { background: #F59E0B; }
-  /* Toast notification */
+
+  /* TOAST */
   .toast { position: fixed; bottom: 24px; right: 24px; background: #111827; color: white; padding: 12px 20px; border-radius: 10px; font-size: 13px; display: flex; align-items: center; gap: 10px; transform: translateY(80px); opacity: 0; transition: all 0.3s; z-index: 1000; }
   .toast.show { transform: translateY(0); opacity: 1; }
   .toast-icon { width: 20px; height: 20px; background: #10B981; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; flex-shrink: 0; }
-  /* Detail screen */
+
+  /* MODAL REJET */
+  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); display: none; align-items: center; justify-content: center; z-index: 500; }
+  .modal-overlay.show { display: flex; }
+  .modal { background: white; border-radius: 16px; padding: 24px; width: 420px; }
+  .modal-title { font-size: 16px; font-weight: 600; color: #111827; margin-bottom: 8px; }
+  .modal-desc { font-size: 13px; color: #6B7280; margin-bottom: 16px; line-height: 1.5; }
+  .modal-input { width: 100%; border: 1px solid #E5E7EB; border-radius: 8px; padding: 10px 12px; font-size: 13px; color: #374151; background: white; resize: none; font-family: inherit; outline: none; margin-bottom: 16px; }
+  .modal-input:focus { border-color: #F59E0B; }
+  .modal-hint { font-size: 11px; color: #9CA3AF; font-style: italic; margin-bottom: 16px; }
+  .modal-btns { display: flex; gap: 8px; justify-content: flex-end; }
+  .modal-cancel { background: white; border: 1px solid #E5E7EB; color: #374151; border-radius: 8px; padding: 8px 16px; font-size: 13px; cursor: pointer; }
+  .modal-confirm { background: #EF4444; border: none; color: white; border-radius: 8px; padding: 8px 16px; font-size: 13px; cursor: pointer; }
+
+  /* DETAIL */
   .detail-topbar { padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #F3F4F6; }
   .detail-context { font-size: 11px; color: #9CA3AF; text-transform: uppercase; letter-spacing: 0.5px; }
   .detail-title { font-size: 22px; font-weight: 700; color: #111827; margin-top: 4px; }
@@ -119,12 +163,13 @@
   .step-item { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid #F9FAFB; }
   .step-num { width: 24px; height: 24px; background: #F3F4F6; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; color: #374151; flex-shrink: 0; }
   .step-text { font-size: 13px; color: #374151; padding-top: 3px; }
-  /* Contexte terrain */
   .terrain-section { background: #FFFBEB; border: 1px solid #FDE68A; border-radius: 10px; padding: 16px; }
   .terrain-label { font-size: 11px; font-weight: 600; color: #92400E; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
   .terrain-input { width: 100%; border: 1px solid #FDE68A; border-radius: 8px; padding: 10px 12px; font-size: 13px; color: #374151; background: white; resize: none; font-family: inherit; outline: none; }
   .terrain-input:focus { border-color: #F59E0B; }
   .terrain-hint { font-size: 11px; color: #92400E; margin-top: 8px; font-style: italic; }
+
+  /* DETAIL SIDE */
   .detail-side { display: flex; flex-direction: column; gap: 12px; }
   .impact-card { background: white; border: 1px solid #E5E7EB; border-radius: 12px; padding: 20px; }
   .impact-label { font-size: 11px; font-weight: 600; color: #9CA3AF; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
@@ -135,12 +180,13 @@
   .meta-val { font-size: 12px; font-weight: 500; color: #111827; }
   .meta-val.green { color: #059669; }
   .cta-card { background: white; border: 1px solid #E5E7EB; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 8px; }
-  .btn-primary { background: #2563EB; color: white; border: none; border-radius: 8px; padding: 12px; font-size: 14px; font-weight: 500; cursor: pointer; width: 100%; transition: background 0.15s; }
+  .btn-primary { background: #2563EB; color: white; border: none; border-radius: 8px; padding: 13px; font-size: 14px; font-weight: 600; cursor: pointer; width: 100%; transition: background 0.15s; letter-spacing: 0.2px; }
   .btn-primary:hover { background: #1D4ED8; }
   .btn-secondary { background: white; color: #374151; border: 1px solid #E5E7EB; border-radius: 8px; padding: 10px; font-size: 13px; cursor: pointer; width: 100%; }
   .btn-danger { background: white; color: #DC2626; border: 1px solid #FECACA; border-radius: 8px; padding: 10px; font-size: 13px; cursor: pointer; width: 100%; }
   .btn-ghost { background: none; border: none; color: #9CA3AF; font-size: 13px; cursor: pointer; padding: 6px; width: 100%; }
-  /* Alert screen */
+
+  /* ALERT SCREEN */
   .alert-screen { padding: 20px 24px; flex: 1; overflow-y: auto; }
   .alert-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
   .alert-context { font-size: 11px; color: #9CA3AF; text-transform: uppercase; letter-spacing: 0.5px; }
@@ -151,6 +197,14 @@
   .perf-value { font-size: 36px; font-weight: 700; color: #111827; }
   .perf-delta { display: inline-flex; align-items: center; gap: 4px; background: #FEE2E2; color: #DC2626; font-size: 13px; font-weight: 600; padding: 3px 10px; border-radius: 20px; margin: 8px 0; }
   .perf-diag { font-size: 13px; color: #374151; line-height: 1.5; margin-top: 8px; }
+
+  /* JOURS RESTANTS */
+  .days-remaining { margin-top: 12px; background: #FFF7ED; border: 1px solid #FED7AA; border-radius: 8px; padding: 10px 14px; display: flex; align-items: center; gap: 10px; }
+  .days-icon { font-size: 16px; }
+  .days-text { font-size: 12px; color: #92400E; }
+  .days-text strong { font-weight: 700; }
+
+  /* CORRECTIVE */
   .corrective-title { font-size: 16px; font-weight: 600; color: #111827; margin-bottom: 4px; }
   .corrective-sub { font-size: 13px; color: #9CA3AF; margin-bottom: 16px; }
   .corrective-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px; }
@@ -176,19 +230,22 @@
   .footer-btns { display: flex; gap: 10px; }
   .btn-cancel { background: white; border: 1px solid #E5E7EB; color: #374151; border-radius: 8px; padding: 10px 20px; font-size: 13px; cursor: pointer; }
   .btn-validate { background: #2563EB; border: none; color: white; border-radius: 8px; padding: 10px 20px; font-size: 13px; font-weight: 500; cursor: pointer; }
-  .chart-label { font-size: 9px; fill: #9CA3AF; }
-  .chart-value { font-size: 9px; fill: #374151; font-weight: 500; }
-  /* Confirmation screen */
+
+  /* CONFIRM SCREEN */
   .confirm-screen { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; gap: 16px; }
   .confirm-icon { width: 64px; height: 64px; background: #D1FAE5; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; }
   .confirm-title { font-size: 20px; font-weight: 700; color: #111827; }
-  .confirm-desc { font-size: 14px; color: #6B7280; text-align: center; max-width: 300px; line-height: 1.6; }
-  .confirm-sub { font-size: 12px; color: #9CA3AF; }
+  .confirm-desc { font-size: 14px; color: #6B7280; text-align: center; max-width: 360px; line-height: 1.6; }
+  .confirm-sub { font-size: 12px; color: #9CA3AF; font-style: italic; }
   .btn-retour { background: #2563EB; color: white; border: none; border-radius: 8px; padding: 12px 24px; font-size: 14px; font-weight: 500; cursor: pointer; margin-top: 8px; }
+
+  .chart-label { font-size: 9px; fill: #9CA3AF; }
+  .chart-value { font-size: 9px; fill: #374151; font-weight: 500; }
 </style>
 </head>
 <body>
 
+<!-- SIDEBAR -->
 <div class="sidebar">
   <div class="sidebar-logo">
     <div class="logo-icon">SA</div>
@@ -228,6 +285,7 @@
       <span><span class="sync-dot"></span>Synchronisé · 16h12</span>
     </div>
   </div>
+
   <div class="briefing-banner">
     <div class="briefing-left">
       <div class="briefing-icon">⚡</div>
@@ -241,6 +299,32 @@
       <button type="button" class="btn-alert" onclick="showScreen('alert')">Voir l'alerte</button>
     </div>
   </div>
+
+  <!-- GO/NO-GO BAR -->
+  <div class="gonogo-bar">
+    <div class="gonogo-header">
+      <span class="gonogo-title">Critères Go/No-Go — Phase M1–M3</span>
+      <span class="gonogo-badge nogo" id="gonogo-badge">No-Go · En cours</span>
+    </div>
+    <div class="gonogo-track">
+      <div class="gonogo-item">
+        <div class="gonogo-label">Taux d'utilisation hebdo</div>
+        <div class="gonogo-progress"><div class="gonogo-fill red" id="fill-utilisation" style="width:63%"></div></div>
+        <div class="gonogo-val" id="val-utilisation">38% → objectif 60%</div>
+      </div>
+      <div class="gonogo-item">
+        <div class="gonogo-label">Taux d'exécution actions</div>
+        <div class="gonogo-progress"><div class="gonogo-fill orange" id="fill-execution" style="width:50%"></div></div>
+        <div class="gonogo-val">25% → objectif 40%</div>
+      </div>
+      <div class="gonogo-item">
+        <div class="gonogo-label">Bugs critiques ouverts</div>
+        <div class="gonogo-progress"><div class="gonogo-fill orange" id="fill-bugs" style="width:40%"></div></div>
+        <div class="gonogo-val">2 bugs → objectif 0</div>
+      </div>
+    </div>
+  </div>
+
   <div class="kpi-grid">
     <div class="kpi-card">
       <div class="kpi-header"><div class="kpi-label">Ventes du mois</div><div class="kpi-delta neg">-30% vs objectif</div></div>
@@ -282,6 +366,7 @@
       </div>
     </div>
   </div>
+
   <div class="content-row">
     <div class="actions-card">
       <div class="card-header"><div class="card-title">À faire maintenant</div><span style="font-size:13px;color:#2563EB;cursor:pointer">Tout voir</span></div>
@@ -292,23 +377,17 @@
           <tr class="action-row" id="row-1" onclick="goToDetail(1)">
             <td><div><span class="action-dot" id="dot-1"></span><span class="action-name" id="name-1">Réassort jean slim noir</span></div><div class="action-desc">Rupture imminente sur la taille 38 — pic de demande détecté ce matin.</div></td>
             <td><span class="action-badge valider" id="badge-1">À valider</span></td>
-            <td><span class="action-impact pos">+420 €</span></td>
-            <td><span class="action-duration">⏱ 5 min</span></td>
-            <td style="color:#D1D5DB">›</td>
+            <td><span class="action-impact pos">+420 €</span></td><td><span class="action-duration">⏱ 5 min</span></td><td style="color:#D1D5DB">›</td>
           </tr>
           <tr class="action-row" id="row-2" onclick="goToDetail(2)">
             <td><div><span class="action-dot" id="dot-2"></span><span class="action-name" id="name-2">Pousser promo flash maille</span></div><div class="action-desc">Stock dormant sur 3 références — 14 jours sans vente.</div></td>
             <td><span class="action-badge valider" id="badge-2">À valider</span></td>
-            <td><span class="action-impact neg">-40%</span></td>
-            <td><span class="action-duration">⏱ 2 min</span></td>
-            <td style="color:#D1D5DB">›</td>
+            <td><span class="action-impact neg">-40%</span></td><td><span class="action-duration">⏱ 2 min</span></td><td style="color:#D1D5DB">›</td>
           </tr>
           <tr class="action-row" id="row-3" onclick="goToDetail(3)">
             <td><div><span class="action-dot" id="dot-3"></span><span class="action-name" id="name-3">Réorganiser vitrine entrée</span></div><div class="action-desc">Mettre en avant la nouvelle collection lin — fort potentiel.</div></td>
             <td><span class="action-badge valider" id="badge-3">À valider</span></td>
-            <td><span class="action-impact pos">+18%</span></td>
-            <td><span class="action-duration">⏱ 15 min</span></td>
-            <td style="color:#D1D5DB">›</td>
+            <td><span class="action-impact pos">+18%</span></td><td><span class="action-duration">⏱ 15 min</span></td><td style="color:#D1D5DB">›</td>
           </tr>
         </tbody>
       </table>
@@ -357,8 +436,8 @@
       </div>
       <div class="terrain-section">
         <div class="terrain-label">📍 Votre contexte terrain</div>
-        <textarea class="terrain-input" rows="3" placeholder="Notez ici pourquoi vous validez ou rejetez cette suggestion — votre jugement terrain est essentiel..."></textarea>
-        <div class="terrain-hint">Ce champ est facultatif. Il aide à améliorer la pertinence des prochaines suggestions.</div>
+        <textarea class="terrain-input" rows="3" placeholder="Notez ici votre contexte terrain — ces retours améliorent la pertinence des prochaines suggestions..."></textarea>
+        <div class="terrain-hint">Ce champ est facultatif. Il alimente directement le système de suggestions.</div>
       </div>
     </div>
     <div class="detail-side">
@@ -377,9 +456,9 @@
         <div class="meta-row" style="border-bottom:none"><span class="meta-key">Source</span><span class="meta-val">Stock + ventes 7j</span></div>
       </div>
       <div class="cta-card">
-        <button type="button" class="btn-primary" onclick="validerAction()">✓ Prendre en charge</button>
+        <button type="button" class="btn-primary" onclick="validerAction()">✓ Je valide et je prends en charge</button>
         <button type="button" class="btn-secondary" onclick="showScreen('dashboard')">⏱ Reporter à plus tard</button>
-        <button type="button" class="btn-danger" onclick="rejeterAction()">Pas pertinent pour mon magasin</button>
+        <button type="button" class="btn-danger" onclick="ouvrirModalRejet()">Pas pertinent pour mon magasin</button>
         <button type="button" class="btn-ghost">👤 Déléguer à un coéquipier</button>
       </div>
     </div>
@@ -403,6 +482,10 @@
         <div class="perf-value">84 200 €</div>
         <div><span class="perf-delta">▼ -30% vs objectif 120 000 €</span></div>
         <div class="perf-diag"><strong>Diagnostic.</strong> Trafic en magasin stable mais panier moyen en baisse. La conversion sur le rayon femme a chuté de 8 points depuis 10h.</div>
+        <div class="days-remaining">
+          <span class="days-icon">📅</span>
+          <span class="days-text">Il reste <strong>3 jours</strong> pour atteindre l'objectif mensuel. Il manque <strong>35 800 €</strong> à réaliser.</span>
+        </div>
       </div>
       <div>
         <div style="font-size:11px;color:#9CA3AF;margin-bottom:8px">Évolution mensuelle (€)</div>
@@ -414,48 +497,47 @@
         </svg>
       </div>
     </div>
-    <div>
-      <div class="corrective-title">Choisir votre axe correctif</div>
-      <div class="corrective-sub">Sélectionnez un axe · la décision finale vous appartient</div>
-      <div class="corrective-grid">
-        <div class="corrective-card selected" onclick="selectCard(this,'Activer une promo flash femme')">
-          <div style="display:flex;justify-content:space-between;margin-bottom:8px"><div class="corrective-card-icon">⚡</div><div class="radio-circle"></div></div>
-          <div class="corrective-card-title">Activer une promo flash femme</div>
-          <div class="recommended-badge">Recommandé</div>
-          <div class="corrective-desc">-15% sur la collection printemps, communiquée à l'entrée et en caisse.</div>
-          <div class="corrective-meta">
-            <div class="corrective-meta-row"><span class="corrective-meta-key">Impact</span><span class="corrective-meta-val">↑ +12% conversion estimée</span></div>
-            <div class="corrective-meta-row"><span class="corrective-meta-key">Effort</span><span class="corrective-meta-val neutral">Faible · 5 min</span></div>
-            <div class="corrective-meta-row"><span class="corrective-meta-key">Décision finale</span><span class="corrective-meta-val decision">vous</span></div>
-          </div>
-        </div>
-        <div class="corrective-card" onclick="selectCard(this,'Repositionner l\'équipe sur le rayon femme')">
-          <div style="display:flex;justify-content:space-between;margin-bottom:8px"><div class="corrective-card-icon">👥</div><div class="radio-circle"></div></div>
-          <div class="corrective-card-title">Repositionner l'équipe sur le rayon femme</div>
-          <div class="corrective-desc">Déplacer 2 conseillers de l'étage homme vers femme jusqu'à 18h.</div>
-          <div class="corrective-meta">
-            <div class="corrective-meta-row"><span class="corrective-meta-key">Impact</span><span class="corrective-meta-val">↑ +6% panier moyen estimé</span></div>
-            <div class="corrective-meta-row"><span class="corrective-meta-key">Effort</span><span class="corrective-meta-val neutral">Moyen · 10 min</span></div>
-            <div class="corrective-meta-row"><span class="corrective-meta-key">Décision finale</span><span class="corrective-meta-val decision">vous</span></div>
-          </div>
-        </div>
-        <div class="corrective-card" onclick="selectCard(this,'Mettre en avant les nouveautés en vitrine')">
-          <div style="display:flex;justify-content:space-between;margin-bottom:8px"><div class="corrective-card-icon">🪟</div><div class="radio-circle"></div></div>
-          <div class="corrective-card-title">Mettre en avant les nouveautés en vitrine</div>
-          <div class="corrective-desc">Remplacer la sélection actuelle par la collection lin reçue lundi.</div>
-          <div class="corrective-meta">
-            <div class="corrective-meta-row"><span class="corrective-meta-key">Impact</span><span class="corrective-meta-val">↑ +18% trafic estimé</span></div>
-            <div class="corrective-meta-row"><span class="corrective-meta-key">Effort</span><span class="corrective-meta-val neutral">Élevé · 25 min</span></div>
-            <div class="corrective-meta-row"><span class="corrective-meta-key">Décision finale</span><span class="corrective-meta-val decision">vous</span></div>
-          </div>
+
+    <div class="corrective-title">Choisir votre axe correctif</div>
+    <div class="corrective-sub">Sélectionnez un axe · la décision finale vous appartient</div>
+    <div class="corrective-grid">
+      <div class="corrective-card selected" onclick="selectCard(this,'Activer une promo flash femme')">
+        <div style="display:flex;justify-content:space-between;margin-bottom:8px"><div class="corrective-card-icon">⚡</div><div class="radio-circle"></div></div>
+        <div class="corrective-card-title">Activer une promo flash femme</div>
+        <div class="recommended-badge">Recommandé</div>
+        <div class="corrective-desc">-15% sur la collection printemps, communiquée à l'entrée et en caisse.</div>
+        <div class="corrective-meta">
+          <div class="corrective-meta-row"><span class="corrective-meta-key">Impact</span><span class="corrective-meta-val">↑ +12% conversion estimée</span></div>
+          <div class="corrective-meta-row"><span class="corrective-meta-key">Effort</span><span class="corrective-meta-val neutral">Faible · 5 min</span></div>
+          <div class="corrective-meta-row"><span class="corrective-meta-key">Décision finale</span><span class="corrective-meta-val decision">vous</span></div>
         </div>
       </div>
-      <div class="corrective-footer">
-        <div><div class="selected-label">Axe sélectionné</div><div class="selected-value" id="selected-action">Activer une promo flash femme</div></div>
-        <div class="footer-btns">
-          <button type="button" class="btn-cancel" onclick="showScreen('dashboard')">Annuler</button>
-          <button type="button" class="btn-validate" onclick="showScreen('confirm')">Valider mon choix</button>
+      <div class="corrective-card" onclick="selectCard(this,'Repositionner l\'équipe sur le rayon femme')">
+        <div style="display:flex;justify-content:space-between;margin-bottom:8px"><div class="corrective-card-icon">👥</div><div class="radio-circle"></div></div>
+        <div class="corrective-card-title">Repositionner l'équipe sur le rayon femme</div>
+        <div class="corrective-desc">Déplacer 2 conseillers de l'étage homme vers femme jusqu'à 18h.</div>
+        <div class="corrective-meta">
+          <div class="corrective-meta-row"><span class="corrective-meta-key">Impact</span><span class="corrective-meta-val">↑ +6% panier moyen estimé</span></div>
+          <div class="corrective-meta-row"><span class="corrective-meta-key">Effort</span><span class="corrective-meta-val neutral">Moyen · 10 min</span></div>
+          <div class="corrective-meta-row"><span class="corrective-meta-key">Décision finale</span><span class="corrective-meta-val decision">vous</span></div>
         </div>
+      </div>
+      <div class="corrective-card" onclick="selectCard(this,'Mettre en avant les nouveautés en vitrine')">
+        <div style="display:flex;justify-content:space-between;margin-bottom:8px"><div class="corrective-card-icon">🪟</div><div class="radio-circle"></div></div>
+        <div class="corrective-card-title">Mettre en avant les nouveautés en vitrine</div>
+        <div class="corrective-desc">Remplacer la sélection actuelle par la collection lin reçue lundi.</div>
+        <div class="corrective-meta">
+          <div class="corrective-meta-row"><span class="corrective-meta-key">Impact</span><span class="corrective-meta-val">↑ +18% trafic estimé</span></div>
+          <div class="corrective-meta-row"><span class="corrective-meta-key">Effort</span><span class="corrective-meta-val neutral">Élevé · 25 min</span></div>
+          <div class="corrective-meta-row"><span class="corrective-meta-key">Décision finale</span><span class="corrective-meta-val decision">vous</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="corrective-footer">
+      <div><div class="selected-label">Axe sélectionné</div><div class="selected-value" id="selected-action">Activer une promo flash femme</div></div>
+      <div class="footer-btns">
+        <button type="button" class="btn-cancel" onclick="showScreen('dashboard')">Annuler</button>
+        <button type="button" class="btn-validate" onclick="showScreen('confirm')">Valider mon choix</button>
       </div>
     </div>
   </div>
@@ -465,8 +547,8 @@
 <div class="screen" id="screen-confirm">
   <div class="confirm-screen">
     <div class="confirm-icon">✓</div>
-    <div class="confirm-title">Axe correctif activé</div>
-    <div class="confirm-desc" id="confirm-desc">Votre choix a été enregistré. L'équipe peut être notifiée pour mise en œuvre.</div>
+    <div class="confirm-title">Axe correctif enregistré</div>
+    <div class="confirm-desc" id="confirm-desc">Votre choix a été enregistré. L'outil ajustera ses prochaines suggestions en fonction de votre décision.</div>
     <div class="confirm-sub">L'outil a suggéré — vous avez décidé.</div>
     <button type="button" class="btn-retour" onclick="showScreen('dashboard')">← Retour au dashboard</button>
   </div>
@@ -480,14 +562,28 @@
   <span id="toast-msg">Action prise en charge</span>
 </div>
 
+<!-- MODAL REJET -->
+<div class="modal-overlay" id="modal-rejet">
+  <div class="modal">
+    <div class="modal-title">Cette suggestion n'est pas pertinente ?</div>
+    <div class="modal-desc">Votre retour terrain est précieux. En indiquant pourquoi cette suggestion ne correspond pas à votre réalité, vous aidez l'outil à mieux vous comprendre.</div>
+    <textarea class="modal-input" rows="3" id="rejet-raison" placeholder="Ex : Ce produit est déjà en rupture totale, pas uniquement en rayon..."></textarea>
+    <div class="modal-hint">Ce champ est facultatif mais améliore directement la pertinence des prochaines suggestions.</div>
+    <div class="modal-btns">
+      <button type="button" class="modal-cancel" onclick="fermerModalRejet()">Annuler</button>
+      <button type="button" class="modal-confirm" onclick="confirmerRejet()">Confirmer le rejet</button>
+    </div>
+  </div>
+</div>
+
 <script>
 var currentAction = 1;
 var actionsDone = {};
 
 function showScreen(name) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.screen').forEach(function(s) { s.classList.remove('active'); });
   document.getElementById('screen-' + name).classList.add('active');
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(function(n) { n.classList.remove('active'); });
   if (name === 'dashboard') document.getElementById('nav-accueil').classList.add('active');
   if (name === 'alert' || name === 'confirm') document.getElementById('nav-pilotage').classList.add('active');
   if (name === 'detail') document.getElementById('nav-actions').classList.add('active');
@@ -507,17 +603,28 @@ function validerAction() {
   if (name) name.classList.add('done');
   if (badge) { badge.textContent = 'En cours'; badge.className = 'action-badge encours'; }
   updateCounter();
-  showToast('Action prise en charge ✓');
-  setTimeout(function() { showScreen('dashboard'); }, 800);
+  updateGoNogo();
+  showToast('✓ Action prise en charge — l\'outil en tient compte');
+  setTimeout(function() { showScreen('dashboard'); }, 900);
 }
 
-function rejeterAction() {
+function ouvrirModalRejet() {
+  document.getElementById('modal-rejet').classList.add('show');
+  document.getElementById('rejet-raison').value = '';
+}
+
+function fermerModalRejet() {
+  document.getElementById('modal-rejet').classList.remove('show');
+}
+
+function confirmerRejet() {
+  fermerModalRejet();
   actionsDone[currentAction] = 'rejected';
   var badge = document.getElementById('badge-' + currentAction);
-  if (badge) { badge.textContent = 'Non pertinent'; badge.className = 'action-badge'; badge.style.background='#F3F4F6'; badge.style.color='#9CA3AF'; }
+  if (badge) { badge.textContent = 'Non pertinent'; badge.className = 'action-badge'; badge.style.background = '#F3F4F6'; badge.style.color = '#9CA3AF'; }
   updateCounter();
-  showToast('Suggestion rejetée — merci pour ce retour');
-  setTimeout(function() { showScreen('dashboard'); }, 800);
+  showToast('Retour enregistré — merci, l\'outil s\'adapte');
+  setTimeout(function() { showScreen('dashboard'); }, 900);
 }
 
 function updateCounter() {
@@ -525,21 +632,39 @@ function updateCounter() {
   var pct = Math.round((done / 3) * 100);
   document.getElementById('counter-pct').textContent = pct + '%';
   document.getElementById('counter-txt').textContent = done + '/3 traitées';
-  document.getElementById('sidebar-briefing-text').textContent = (3 - done) + ' actions restantes · 1 alerte · objectif mensuel en cours.';
+  document.getElementById('sidebar-briefing-text').textContent = (3 - done) + ' action(s) restante(s) · 1 alerte · objectif mensuel en cours.';
+}
+
+function updateGoNogo() {
+  var done = Object.keys(actionsDone).length;
+  var newUtil = Math.min(38 + done * 10, 65);
+  var fillUtil = document.getElementById('fill-utilisation');
+  var valUtil = document.getElementById('val-utilisation');
+  var badge = document.getElementById('gonogo-badge');
+  if (fillUtil) {
+    var pct = (newUtil / 60) * 100;
+    fillUtil.style.width = Math.min(pct, 100) + '%';
+    fillUtil.className = 'gonogo-fill ' + (newUtil >= 60 ? 'green' : newUtil >= 45 ? 'orange' : 'red');
+    valUtil.textContent = newUtil + '% → objectif 60%';
+  }
+  if (newUtil >= 60 && badge) {
+    badge.textContent = 'Go ✓';
+    badge.className = 'gonogo-badge go';
+  }
 }
 
 function showToast(msg) {
   var t = document.getElementById('toast');
   document.getElementById('toast-msg').textContent = msg;
   t.classList.add('show');
-  setTimeout(function() { t.classList.remove('show'); }, 2500);
+  setTimeout(function() { t.classList.remove('show'); }, 3000);
 }
 
 function selectCard(card, actionName) {
-  document.querySelectorAll('.corrective-card').forEach(c => c.classList.remove('selected'));
+  document.querySelectorAll('.corrective-card').forEach(function(c) { c.classList.remove('selected'); });
   card.classList.add('selected');
   document.getElementById('selected-action').textContent = actionName;
-  document.getElementById('confirm-desc').textContent = '"' + actionName + '" a été enregistré. L\'équipe peut être notifiée pour mise en œuvre.';
+  document.getElementById('confirm-desc').textContent = '"' + actionName + '" a été enregistré. L\'outil ajustera ses prochaines suggestions en fonction de votre décision.';
 }
 </script>
 </body>
