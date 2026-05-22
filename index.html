@@ -238,7 +238,7 @@
     </div>
     <div class="briefing-right">
       <div class="briefing-stat"><strong id="counter-pct">0%</strong><span id="counter-txt">0/3 traitées</span></div>
-      <button class="btn-alert" onclick="showScreen('alert')">Voir l'alerte</button>
+      <button type="button" class="btn-alert" onclick="showScreen('alert')">Voir l'alerte</button>
     </div>
   </div>
   <div class="kpi-grid">
@@ -377,10 +377,10 @@
         <div class="meta-row" style="border-bottom:none"><span class="meta-key">Source</span><span class="meta-val">Stock + ventes 7j</span></div>
       </div>
       <div class="cta-card">
-        <button class="btn-primary" onclick="validerAction()">✓ Prendre en charge</button>
-        <button class="btn-secondary" onclick="showScreen('dashboard')">⏱ Reporter à plus tard</button>
-        <button class="btn-danger" onclick="rejeterAction()">Pas pertinent pour mon magasin</button>
-        <button class="btn-ghost">👤 Déléguer à un coéquipier</button>
+        <button type="button" class="btn-primary" onclick="validerAction()">✓ Prendre en charge</button>
+        <button type="button" class="btn-secondary" onclick="showScreen('dashboard')">⏱ Reporter à plus tard</button>
+        <button type="button" class="btn-danger" onclick="rejeterAction()">Pas pertinent pour mon magasin</button>
+        <button type="button" class="btn-ghost">👤 Déléguer à un coéquipier</button>
       </div>
     </div>
   </div>
@@ -453,8 +453,8 @@
       <div class="corrective-footer">
         <div><div class="selected-label">Axe sélectionné</div><div class="selected-value" id="selected-action">Activer une promo flash femme</div></div>
         <div class="footer-btns">
-          <button class="btn-cancel" onclick="showScreen('dashboard')">Annuler</button>
-          <button class="btn-validate" onclick="showScreen('confirm')">Valider mon choix</button>
+          <button type="button" class="btn-cancel" onclick="showScreen('dashboard')">Annuler</button>
+          <button type="button" class="btn-validate" onclick="showScreen('confirm')">Valider mon choix</button>
         </div>
       </div>
     </div>
@@ -468,7 +468,7 @@
     <div class="confirm-title">Axe correctif activé</div>
     <div class="confirm-desc" id="confirm-desc">Votre choix a été enregistré. L'équipe peut être notifiée pour mise en œuvre.</div>
     <div class="confirm-sub">L'outil a suggéré — vous avez décidé.</div>
-    <button class="btn-retour" onclick="showScreen('dashboard')">← Retour au dashboard</button>
+    <button type="button" class="btn-retour" onclick="showScreen('dashboard')">← Retour au dashboard</button>
   </div>
 </div>
 
